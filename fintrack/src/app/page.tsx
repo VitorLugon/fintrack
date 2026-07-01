@@ -2,6 +2,7 @@ const foundationItems = [
   "Next.js com App Router e TypeScript",
   "Tailwind CSS e layout responsivo",
   "Prisma preparado para PostgreSQL",
+  "Login demo com sessão protegida",
   "Vitest e Testing Library configurados",
 ];
 
@@ -20,6 +21,20 @@ export default function Home() {
           em um único lugar. A base técnica está pronta para receber as
           funcionalidades do MVP.
         </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <a
+            href="/login"
+            className="rounded-xl bg-emerald-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-800"
+          >
+            Acessar demo
+          </a>
+          <a
+            href="/dashboard"
+            className="rounded-xl border border-emerald-950/10 bg-white px-5 py-3 text-sm font-semibold text-emerald-900 transition hover:bg-emerald-50"
+          >
+            Ver área interna
+          </a>
+        </div>
       </div>
 
       <div className="rounded-3xl border border-emerald-950/10 bg-white p-6 shadow-xl shadow-emerald-950/5">

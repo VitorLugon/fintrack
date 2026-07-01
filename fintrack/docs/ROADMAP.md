@@ -19,10 +19,13 @@
 
 ## Etapa 3 — Autenticação
 
-- Implementar login.
-- Implementar logout.
-- Proteger rotas internas.
-- Criar função para obter usuário atual.
+- Implementar login. ✅
+- Implementar logout. ✅
+- Proteger rotas internas. ✅
+- Criar função para obter usuário atual. ✅
+
+Observação: nesta etapa existe apenas acesso pelo usuário demo da seed. Cadastro
+público fica fora do escopo por enquanto.
 
 ## Etapa 4 — Categorias
 

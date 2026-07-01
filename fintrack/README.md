@@ -16,15 +16,18 @@ orçamentos e metas, além de acompanhar um dashboard mensal.
 
 ## Estado atual
 
-A primeira etapa contém a fundação do projeto:
+O projeto contém a fundação técnica e a autenticação inicial:
 
 - estrutura inicial de pastas;
 - schema Prisma com as entidades principais;
+- seed com usuário demo;
+- login e logout;
+- proteção server-side de rotas internas;
 - configuração do Vitest;
 - layout e página inicial;
 - documentação técnica inicial.
 
-Autenticação, CRUDs e dashboard ainda não foram implementados.
+CRUDs financeiros e dashboard real ainda não foram implementados.
 
 ## Como executar
 
@@ -34,7 +37,8 @@ Autenticação, CRUDs e dashboard ainda não foram implementados.
    npm install
    ```
 
-2. Copie `.env.example` para `.env` e configure a `DATABASE_URL`.
+2. Copie `.env.example` para `.env` e configure `DATABASE_URL` e
+   `AUTH_SECRET`.
 
 3. Gere o Prisma Client:
 
@@ -42,13 +46,25 @@ Autenticação, CRUDs e dashboard ainda não foram implementados.
    npx prisma generate
    ```
 
-4. Inicie o projeto:
+4. Rode as migrations e a seed para criar o usuário demo:
+
+   ```bash
+   npx prisma migrate dev
+   npx prisma db seed
+   ```
+
+5. Inicie o projeto:
 
    ```bash
    npm run dev
    ```
 
 A aplicação estará disponível em `http://localhost:3000`.
+
+Login demo:
+
+- e-mail: `demo@fintrack.com`
+- senha: `demo123`
 
 ## Validações
 

@@ -20,8 +20,12 @@
 - `/budgets`: orçamentos mensais.
 - `/goals`: metas financeiras.
 
-Somente a rota `/` faz parte da base inicial. As demais serão implementadas nas
-próximas etapas do MVP.
+As rotas `/login` e `/dashboard` já existem na etapa de autenticação. O
+dashboard ainda é uma tela protegida de placeholder; os cards e gráficos serão
+implementados nas próximas etapas do MVP.
+
+Rotas internas devem ficar dentro do grupo protegido do App Router e validar a
+sessão no servidor antes de renderizar a página.
 
 ## Separação de responsabilidades
 
@@ -31,6 +35,18 @@ fronteiras da aplicação.
 
 Toda consulta futura a dados financeiros deverá usar o identificador obtido da
 sessão no servidor e filtrar por `userId`.
+
+## Autenticação
+
+A autenticação atual usa o usuário demo criado pela seed:
+
+- e-mail: `demo@fintrack.com`;
+- senha: `demo123`.
+
+O login valida entrada com Zod, compara a senha com `passwordHash` usando
+`bcryptjs` e cria um cookie HTTP-only assinado por `AUTH_SECRET`. A função
+server-side `getCurrentUser` retorna apenas `id`, `name` e `email`, sem expor
+`passwordHash` ao frontend.
 
 ## Valores monetários
 
