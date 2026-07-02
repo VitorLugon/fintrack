@@ -62,6 +62,21 @@ query `listActiveCategoriesForTransactionForm` retorna apenas categorias
 `ACTIVE`, para que categorias inativas não apareçam como opção padrão ao criar
 transações futuras.
 
+## Transações
+
+A feature de transações fica dividida entre:
+
+- `src/server/transactions`: queries e actions server-side;
+- `src/features/transactions`: schemas, regras financeiras e componentes;
+- `src/app/(protected)/transactions`: rota protegida.
+
+O formulário exibe valores em reais, mas a conversão para centavos acontece
+antes da persistência. Todas as actions validam o usuário da sessão, filtram por
+`userId` e verificam se a categoria pertence ao usuário e é compatível com o
+tipo da transação. A criação usa apenas categorias ativas; filtros e edição
+podem listar categorias históricas do usuário para consultar e preservar
+transações antigas.
+
 ## Valores monetários
 
 Valores são persistidos como inteiros em centavos. A conversão para reais é

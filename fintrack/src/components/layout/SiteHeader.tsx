@@ -29,6 +29,12 @@ export async function SiteHeader() {
             >
               Categorias
             </Link>
+            <Link
+              href="/transactions"
+              className="font-medium text-slate-700 transition hover:text-emerald-800"
+            >
+              Transações
+            </Link>
             <form action={logoutAction}>
               <button
                 type="submit"

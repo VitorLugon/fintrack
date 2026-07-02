@@ -24,12 +24,12 @@ O projeto contém a fundação técnica e a autenticação inicial:
 - login e logout;
 - proteção server-side de rotas internas;
 - criação, listagem, edição e inativação de categorias;
+- criação, listagem, edição, exclusão e filtros de transações;
 - configuração do Vitest;
 - layout e página inicial;
 - documentação técnica inicial.
 
-CRUD de transações, orçamentos, metas e dashboard real ainda não foram
-implementados.
+Orçamentos, metas e dashboard real ainda não foram implementados.
 
 ## Como executar
 

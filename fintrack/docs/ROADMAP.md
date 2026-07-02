@@ -39,12 +39,15 @@ mas não entram na lista padrão de opções para novas transações.
 
 ## Etapa 5 — Transações
 
-- Criar receita.
-- Criar despesa.
-- Listar transações.
-- Filtrar por mês, ano, tipo e categoria.
-- Editar transação.
-- Excluir transação.
+- Criar receita. ✅
+- Criar despesa. ✅
+- Listar transações. ✅
+- Filtrar por mês, ano, tipo e categoria. ✅
+- Editar transação. ✅
+- Excluir transação. ✅
+
+Observação: valores são informados em reais na interface e persistidos como
+centavos no banco.
 
 ## Etapa 6 — Dashboard
 

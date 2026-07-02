@@ -38,10 +38,19 @@ categorias possuem índices para apoiar os filtros mais frequentes.
 ## Transações
 
 - `amountCents` deve ser maior que zero.
+- O formulário pode exibir reais, mas deve converter para centavos antes de
+  salvar.
 - Receitas usam o tipo `INCOME`.
 - Despesas usam o tipo `EXPENSE`.
+- Receitas aumentam o saldo.
+- Despesas reduzem o saldo.
 - Quando houver categoria, o tipo dela deve ser compatível com a transação.
 - A categoria e a transação devem pertencer ao mesmo usuário.
+- Novas transações só devem oferecer categorias ativas como opção padrão.
+- Transações antigas podem preservar categoria inativa, desde que ela pertença
+  ao usuário e continue compatível com o tipo.
+- Filtros por mês, ano, tipo e categoria devem manter o isolamento por
+  `userId`.
 
 ## Categorias
 
@@ -80,6 +89,7 @@ O valor alvo deve ser maior que zero.
 ## Casos que exigem testes
 
 - soma de receitas e despesas em centavos;
+- conversão de reais para centavos sem usar valor decimal persistido;
 - saldo mensal;
 - isolamento dos cálculos por usuário;
 - filtros por mês, ano, tipo e categoria;
