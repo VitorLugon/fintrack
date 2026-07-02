@@ -108,7 +108,7 @@ export function TransactionEditForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mt-5 grid gap-4">
-      <div className="grid gap-4 md:grid-cols-[1fr_140px_150px]">
+      <div className="grid gap-4 md:grid-cols-[1fr_140px_minmax(11.5rem,170px)]">
         <div className="space-y-2">
           <label className="text-sm font-medium text-slate-700">Título</label>
           <input
@@ -136,7 +136,7 @@ export function TransactionEditForm({
           <input
             type="date"
             {...register("date")}
-            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none focus:border-emerald-600 focus:ring-4 focus:ring-emerald-100"
+            className="w-full min-w-[11.5rem] rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-950 outline-none focus:border-emerald-600 focus:ring-4 focus:ring-emerald-100"
           />
         </div>
       </div>

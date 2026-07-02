@@ -77,6 +77,18 @@ tipo da transação. A criação usa apenas categorias ativas; filtros e ediçã
 podem listar categorias históricas do usuário para consultar e preservar
 transações antigas.
 
+## Dashboard
+
+A rota protegida `/dashboard` consolida os dados financeiros do mês/ano
+selecionados. A query server-side em `src/server/dashboard` filtra transações e
+orçamentos por `userId`, mês e ano, reaproveita funções puras de regras
+financeiras e entrega dados prontos para os componentes visuais em
+`src/features/dashboard`.
+
+Os gráficos usam Recharts no client-side apenas para visualização. Valores são
+formatados em reais na interface, mas todos os cálculos continuam usando
+centavos.
+
 ## Valores monetários
 
 Valores são persistidos como inteiros em centavos. A conversão para reais é

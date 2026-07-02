@@ -51,12 +51,16 @@ centavos no banco.
 
 ## Etapa 6 — Dashboard
 
-- Card de saldo.
-- Card de receitas.
-- Card de despesas.
-- Gráfico por categoria.
-- Gráfico receitas vs despesas.
-- Últimas transações.
+- Card de saldo. ✅
+- Card de receitas. ✅
+- Card de despesas. ✅
+- Gráfico por categoria. ✅
+- Gráfico receitas vs despesas. ✅
+- Últimas transações. ✅
+- Alerta de orçamento ultrapassado. ✅
+
+Observação: o dashboard respeita mês/ano selecionados e filtra dados pelo
+usuário autenticado.
 
 ## Etapa 7 — Orçamentos
 

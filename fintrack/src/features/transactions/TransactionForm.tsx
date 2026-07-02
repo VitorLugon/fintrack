@@ -93,7 +93,7 @@ export function TransactionForm({ categories }: TransactionFormProps) {
       </p>
 
       <div className="mt-6 grid gap-4">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(11.5rem,1fr)]">
           <div className="space-y-2">
             <label
               htmlFor="transaction-type"
@@ -122,7 +122,7 @@ export function TransactionForm({ categories }: TransactionFormProps) {
               id="transaction-date"
               type="date"
               {...register("date")}
-              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-emerald-600 focus:ring-4 focus:ring-emerald-100"
+              className="w-full min-w-[11.5rem] rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-emerald-600 focus:ring-4 focus:ring-emerald-100"
             />
             {errors.date ? (
               <p className="text-sm text-red-700">{errors.date.message}</p>

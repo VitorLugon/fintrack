@@ -91,7 +91,7 @@ export function CategoryCreateForm() {
           ) : null}
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-[0.9fr_1.1fr]">
           <div className="space-y-2">
             <label
               htmlFor="color"
@@ -120,7 +120,7 @@ export function CategoryCreateForm() {
             <input
               id="icon"
               {...register("icon")}
-              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-emerald-600 focus:ring-4 focus:ring-emerald-100"
+              className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-950 outline-none transition placeholder:text-sm focus:border-emerald-600 focus:ring-4 focus:ring-emerald-100"
               placeholder="Ex.: shopping-bag"
             />
             {errors.icon ? (
