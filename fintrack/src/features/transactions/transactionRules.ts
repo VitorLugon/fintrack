@@ -1,4 +1,9 @@
 import { z } from "zod";
+import {
+  calculateMonthlyBalanceCents,
+  calculateTotalExpenseCents,
+  calculateTotalIncomeCents,
+} from "@/features/financial/financialRules";
 
 export const transactionTypes = ["INCOME", "EXPENSE"] as const;
 
@@ -59,28 +64,11 @@ export function formatCentsToInputValue(amountCents: number) {
 export function calculateTransactionSummary(
   transactions: TransactionSummaryInput[],
 ) {
-  return transactions.reduce(
-    (summary, transaction) => {
-      if (transaction.type === "INCOME") {
-        return {
-          ...summary,
-          incomeCents: summary.incomeCents + transaction.amountCents,
-          balanceCents: summary.balanceCents + transaction.amountCents,
-        };
-      }
-
-      return {
-        ...summary,
-        expenseCents: summary.expenseCents + transaction.amountCents,
-        balanceCents: summary.balanceCents - transaction.amountCents,
-      };
-    },
-    {
-      incomeCents: 0,
-      expenseCents: 0,
-      balanceCents: 0,
-    },
-  );
+  return {
+    incomeCents: calculateTotalIncomeCents(transactions),
+    expenseCents: calculateTotalExpenseCents(transactions),
+    balanceCents: calculateMonthlyBalanceCents(transactions),
+  };
 }
 
 export const moneyInputSchema = z

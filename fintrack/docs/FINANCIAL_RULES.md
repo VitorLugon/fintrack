@@ -16,13 +16,20 @@ Exemplo:
 
 Saldo mensal = total de receitas do mês - total de despesas do mês.
 
+A função pura `calculateMonthlyBalanceCents` aplica essa regra usando apenas
+inteiros em centavos.
+
 ## Receitas
 
 Receitas aumentam o saldo.
 
+A função pura `calculateTotalIncomeCents` soma apenas transações `INCOME`.
+
 ## Despesas
 
 Despesas reduzem o saldo.
+
+A função pura `calculateTotalExpenseCents` soma apenas transações `EXPENSE`.
 
 ## Filtros
 
@@ -67,6 +74,9 @@ O gasto de um orçamento é calculado pela soma das despesas da categoria no mê
 
 Progresso do orçamento = gasto / limite.
 
+A função pura `calculateBudgetProgress` retorna percentual limitado a 100% e
+indica quando o orçamento foi ultrapassado.
+
 - `limitCents` deve ser maior que zero.
 - O mês deve estar entre 1 e 12.
 - O orçamento deve usar uma categoria `EXPENSE` do mesmo usuário.
@@ -77,6 +87,9 @@ Progresso do orçamento = gasto / limite.
 ## Meta
 
 Progresso da meta = valor atual / valor alvo.
+
+A função pura `calculateGoalProgress` retorna percentual limitado a 100% e
+indica quando a meta foi concluída.
 
 O valor alvo deve ser maior que zero.
 
@@ -91,11 +104,17 @@ O valor alvo deve ser maior que zero.
 - soma de receitas e despesas em centavos;
 - conversão de reais para centavos sem usar valor decimal persistido;
 - saldo mensal;
+- mês sem transações;
+- apenas receitas;
+- apenas despesas;
+- despesas agrupadas por categoria;
 - isolamento dos cálculos por usuário;
 - filtros por mês, ano, tipo e categoria;
 - compatibilidade entre categoria e transação;
 - validação de categorias por nome, tipo e cor;
 - bloqueio de alteração de tipo em categoria já usada;
 - orçamento dentro, no limite e acima do limite;
+- orçamento ultrapassado;
 - prevenção de orçamento duplicado na mesma competência;
 - progresso de meta com alvo válido, zero e valor atual acima do alvo.
+- meta com valor atual zero e meta concluída.
