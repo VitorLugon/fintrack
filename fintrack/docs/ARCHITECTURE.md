@@ -89,6 +89,16 @@ Os gráficos usam Recharts no client-side apenas para visualização. Valores s�
 formatados em reais na interface, mas todos os cálculos continuam usando
 centavos.
 
+## Orçamentos
+
+A rota protegida `/budgets` permite criar e listar orçamentos mensais por
+categoria de despesa. A criação valida no servidor se a categoria pertence ao
+usuário autenticado, está ativa e é do tipo `EXPENSE`. A listagem calcula o
+valor gasto somando transações de despesa da categoria no mês/ano filtrados.
+
+O banco garante no máximo um orçamento por usuário, categoria, mês e ano, e a
+aplicação também retorna uma mensagem amigável antes de tentar duplicar.
+
 ## Valores monetários
 
 Valores são persistidos como inteiros em centavos. A conversão para reais é

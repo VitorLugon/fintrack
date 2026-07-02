@@ -26,11 +26,12 @@ O projeto contém a fundação técnica e a autenticação inicial:
 - criação, listagem, edição e inativação de categorias;
 - criação, listagem, edição, exclusão e filtros de transações;
 - dashboard mensal com cards, gráficos, últimas transações e alertas de orçamento;
+- criação e acompanhamento de orçamentos mensais por categoria de despesa;
 - configuração do Vitest;
 - layout e página inicial;
 - documentação técnica inicial.
 
-CRUD de orçamentos e metas ainda não foi implementado.
+Metas ainda não foram implementadas.
 
 ## Como executar
 

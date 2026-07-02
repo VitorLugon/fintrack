@@ -35,6 +35,12 @@ export async function SiteHeader() {
             >
               Transações
             </Link>
+            <Link
+              href="/budgets"
+              className="font-medium text-slate-700 transition hover:text-emerald-800"
+            >
+              Orçamentos
+            </Link>
             <form action={logoutAction}>
               <button
                 type="submit"

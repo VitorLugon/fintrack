@@ -64,10 +64,10 @@ usuário autenticado.
 
 ## Etapa 7 — Orçamentos
 
-- Criar orçamento mensal por categoria.
-- Mostrar gasto atual.
-- Mostrar progresso.
-- Alertar orçamento ultrapassado.
+- Criar orçamento mensal por categoria. ✅
+- Mostrar gasto atual. ✅
+- Mostrar progresso. ✅
+- Alertar orçamento ultrapassado. ✅
 
 ## Etapa 8 — Metas
 

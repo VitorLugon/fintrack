@@ -81,6 +81,9 @@ indica quando o orçamento foi ultrapassado.
 - O mês deve estar entre 1 e 12.
 - O orçamento deve usar uma categoria `EXPENSE` do mesmo usuário.
 - Só pode existir um orçamento por usuário, categoria, mês e ano.
+- O valor gasto é calculado apenas com transações `EXPENSE` da categoria no
+  mês/ano selecionados.
+- O percentual usado é calculado com valores em centavos.
 - Se o limite for zero ou inválido, o progresso não deve ser calculado por
   divisão direta.
 
