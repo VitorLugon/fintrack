@@ -98,7 +98,7 @@ export function CategoryEditForm({ category }: CategoryEditFormProps) {
                   : "bg-blue-50 text-blue-800"
               }`}
             >
-              {isInactive ? "Inativa" : "Ativa"}
+              {isInactive ? "Desativada" : "Ativa"}
             </span>
           </div>
           <p className="mt-2 text-sm text-slate-500">
@@ -228,7 +228,7 @@ export function CategoryEditForm({ category }: CategoryEditFormProps) {
               disabled={isPending}
               className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-70"
             >
-              Inativar
+              Desativar
             </button>
           ) : null}
         </div>

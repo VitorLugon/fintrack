@@ -57,9 +57,9 @@ A feature de categorias fica dividida entre:
 - `src/app/(protected)/categories`: rota protegida.
 
 Todas as queries e mutations usam o usuário da sessão no servidor e filtram por
-`userId`. Categorias podem ser criadas, listadas, editadas e inativadas. A
+`userId`. Categorias podem ser criadas, listadas, editadas e desativadas. A
 query `listActiveCategoriesForTransactionForm` retorna apenas categorias
-`ACTIVE`, para que categorias inativas não apareçam como opção padrão ao criar
+`ACTIVE`, para que categorias desativadas não apareçam como opção padrão ao criar
 transações futuras.
 
 ## Transações
@@ -98,6 +98,15 @@ valor gasto somando transações de despesa da categoria no mês/ano filtrados.
 
 O banco garante no máximo um orçamento por usuário, categoria, mês e ano, e a
 aplicação também retorna uma mensagem amigável antes de tentar duplicar.
+
+## Metas
+
+A rota protegida `/goals` permite criar metas financeiras, atualizar o valor
+atual, marcar como concluída e cancelar. Todas as actions validam o usuário da
+sessão e filtram por `userId`.
+
+O progresso é calculado com função pura em centavos. `targetAmountCents` deve
+ser maior que zero e `currentAmountCents` não pode ser negativo.
 
 ## Valores monetários
 

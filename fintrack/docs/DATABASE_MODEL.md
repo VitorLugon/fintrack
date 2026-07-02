@@ -47,7 +47,7 @@ Restrições:
 
 - nome e tipo não podem se repetir para o mesmo usuário;
 - consultas frequentes são indexadas por `userId`, `type` e `status`;
-- categorias vinculadas a transações podem ser inativadas em vez de excluídas.
+- categorias vinculadas a transações podem ser desativadas em vez de excluídas.
 
 ## Transaction
 

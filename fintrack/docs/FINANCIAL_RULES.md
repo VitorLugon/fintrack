@@ -54,7 +54,7 @@ categorias possuem índices para apoiar os filtros mais frequentes.
 - Quando houver categoria, o tipo dela deve ser compatível com a transação.
 - A categoria e a transação devem pertencer ao mesmo usuário.
 - Novas transações só devem oferecer categorias ativas como opção padrão.
-- Transações antigas podem preservar categoria inativa, desde que ela pertença
+- Transações antigas podem preservar categoria desativada, desde que ela pertença
   ao usuário e continue compatível com o tipo.
 - Filtros por mês, ano, tipo e categoria devem manter o isolamento por
   `userId`.
@@ -63,7 +63,7 @@ categorias possuem índices para apoiar os filtros mais frequentes.
 
 - Categorias pertencem a um único usuário.
 - Categorias podem ser `INCOME` ou `EXPENSE`.
-- Categorias inativas não devem aparecer como opção padrão ao criar novas
+- Categorias desativadas não devem aparecer como opção padrão ao criar novas
   transações.
 - O tipo de uma categoria já usada em transações ou orçamentos não deve ser
   alterado, para evitar inconsistência nos cálculos financeiros.
@@ -98,6 +98,10 @@ O valor alvo deve ser maior que zero.
 
 - `targetAmountCents` e `currentAmountCents` usam inteiros em centavos.
 - `currentAmountCents` não deve ser negativo.
+- Atualizar o valor atual deve manter a meta vinculada ao usuário autenticado.
+- Marcar como concluída define a meta como `COMPLETED` e ajusta o valor atual
+  para o valor alvo quando necessário.
+- Cancelar a meta define o status `CANCELLED`.
 - O progresso exibido pode ser limitado a 100%, mesmo que o valor atual
   ultrapasse o alvo.
 - Se o alvo for zero ou inválido, o progresso deve retornar um valor seguro.

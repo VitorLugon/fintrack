@@ -167,7 +167,7 @@ export async function updateCategoryAction(
     success: true,
     message:
       category.status === CategoryStatus.INACTIVE
-        ? "Categoria inativa atualizada."
+        ? "Categoria desativada atualizada."
         : "Categoria atualizada com sucesso.",
   };
 }
@@ -206,6 +206,6 @@ export async function inactivateCategoryAction(
 
   return {
     success: true,
-    message: "Categoria inativada com sucesso.",
+    message: "Categoria desativada com sucesso.",
   };
 }

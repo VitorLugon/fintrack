@@ -32,9 +32,9 @@ público fica fora do escopo por enquanto.
 - Criar categorias. ✅
 - Listar categorias. ✅
 - Editar categorias. ✅
-- Inativar categorias. ✅
+- Desativar categorias. ✅
 
-Observação: categorias inativas continuam aparecendo na gestão de categorias,
+Observação: categorias desativadas continuam aparecendo na gestão de categorias,
 mas não entram na lista padrão de opções para novas transações.
 
 ## Etapa 5 — Transações
@@ -71,9 +71,11 @@ usuário autenticado.
 
 ## Etapa 8 — Metas
 
-- Criar meta.
-- Atualizar progresso.
-- Exibir percentual.
+- Criar meta. ✅
+- Atualizar progresso. ✅
+- Exibir percentual. ✅
+- Marcar meta como concluída. ✅
+- Cancelar meta. ✅
 
 ## Etapa 9 — Polimento
 

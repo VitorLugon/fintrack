@@ -23,15 +23,17 @@ O projeto contém a fundação técnica e a autenticação inicial:
 - seed com usuário demo;
 - login e logout;
 - proteção server-side de rotas internas;
-- criação, listagem, edição e inativação de categorias;
+- criação, listagem, edição e desativação de categorias;
 - criação, listagem, edição, exclusão e filtros de transações;
 - dashboard mensal com cards, gráficos, últimas transações e alertas de orçamento;
 - criação e acompanhamento de orçamentos mensais por categoria de despesa;
+- criação e acompanhamento de metas financeiras;
 - configuração do Vitest;
 - layout e página inicial;
 - documentação técnica inicial.
 
-Metas ainda não foram implementadas.
+O MVP financeiro principal já possui autenticação, categorias, transações,
+dashboard, orçamentos e metas.
 
 ## Como executar
 
