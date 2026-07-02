@@ -23,11 +23,13 @@ O projeto contém a fundação técnica e a autenticação inicial:
 - seed com usuário demo;
 - login e logout;
 - proteção server-side de rotas internas;
+- criação, listagem, edição e inativação de categorias;
 - configuração do Vitest;
 - layout e página inicial;
 - documentação técnica inicial.
 
-CRUDs financeiros e dashboard real ainda não foram implementados.
+CRUD de transações, orçamentos, metas e dashboard real ainda não foram
+implementados.
 
 ## Como executar
 

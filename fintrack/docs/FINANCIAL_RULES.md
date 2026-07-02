@@ -43,6 +43,15 @@ categorias possuem índices para apoiar os filtros mais frequentes.
 - Quando houver categoria, o tipo dela deve ser compatível com a transação.
 - A categoria e a transação devem pertencer ao mesmo usuário.
 
+## Categorias
+
+- Categorias pertencem a um único usuário.
+- Categorias podem ser `INCOME` ou `EXPENSE`.
+- Categorias inativas não devem aparecer como opção padrão ao criar novas
+  transações.
+- O tipo de uma categoria já usada em transações ou orçamentos não deve ser
+  alterado, para evitar inconsistência nos cálculos financeiros.
+
 ## Orçamento
 
 O gasto de um orçamento é calculado pela soma das despesas da categoria no mês e ano do orçamento.
@@ -75,6 +84,8 @@ O valor alvo deve ser maior que zero.
 - isolamento dos cálculos por usuário;
 - filtros por mês, ano, tipo e categoria;
 - compatibilidade entre categoria e transação;
+- validação de categorias por nome, tipo e cor;
+- bloqueio de alteração de tipo em categoria já usada;
 - orçamento dentro, no limite e acima do limite;
 - prevenção de orçamento duplicado na mesma competência;
 - progresso de meta com alvo válido, zero e valor atual acima do alvo.

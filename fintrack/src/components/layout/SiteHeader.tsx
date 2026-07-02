@@ -23,6 +23,12 @@ export async function SiteHeader() {
             >
               Dashboard
             </Link>
+            <Link
+              href="/categories"
+              className="font-medium text-slate-700 transition hover:text-emerald-800"
+            >
+              Categorias
+            </Link>
             <form action={logoutAction}>
               <button
                 type="submit"

@@ -20,9 +20,9 @@
 - `/budgets`: orçamentos mensais.
 - `/goals`: metas financeiras.
 
-As rotas `/login` e `/dashboard` já existem na etapa de autenticação. O
-dashboard ainda é uma tela protegida de placeholder; os cards e gráficos serão
-implementados nas próximas etapas do MVP.
+As rotas `/login`, `/dashboard` e `/categories` já existem. O dashboard ainda é
+uma tela protegida de placeholder; os cards e gráficos serão implementados nas
+próximas etapas do MVP.
 
 Rotas internas devem ficar dentro do grupo protegido do App Router e validar a
 sessão no servidor antes de renderizar a página.
@@ -47,6 +47,20 @@ O login valida entrada com Zod, compara a senha com `passwordHash` usando
 `bcryptjs` e cria um cookie HTTP-only assinado por `AUTH_SECRET`. A função
 server-side `getCurrentUser` retorna apenas `id`, `name` e `email`, sem expor
 `passwordHash` ao frontend.
+
+## Categorias
+
+A feature de categorias fica dividida entre:
+
+- `src/server/categories`: queries e actions server-side;
+- `src/features/categories`: schemas Zod e componentes de formulário/listagem;
+- `src/app/(protected)/categories`: rota protegida.
+
+Todas as queries e mutations usam o usuário da sessão no servidor e filtram por
+`userId`. Categorias podem ser criadas, listadas, editadas e inativadas. A
+query `listActiveCategoriesForTransactionForm` retorna apenas categorias
+`ACTIVE`, para que categorias inativas não apareçam como opção padrão ao criar
+transações futuras.
 
 ## Valores monetários
 

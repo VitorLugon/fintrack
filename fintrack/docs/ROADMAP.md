@@ -29,10 +29,13 @@ público fica fora do escopo por enquanto.
 
 ## Etapa 4 — Categorias
 
-- Criar categorias.
-- Listar categorias.
-- Editar categorias.
-- Inativar categorias.
+- Criar categorias. ✅
+- Listar categorias. ✅
+- Editar categorias. ✅
+- Inativar categorias. ✅
+
+Observação: categorias inativas continuam aparecendo na gestão de categorias,
+mas não entram na lista padrão de opções para novas transações.
 
 ## Etapa 5 — Transações
 
