@@ -20,9 +20,8 @@
 - `/budgets`: orçamentos mensais.
 - `/goals`: metas financeiras.
 
-As rotas `/login`, `/dashboard` e `/categories` já existem. O dashboard ainda é
-uma tela protegida de placeholder; os cards e gráficos serão implementados nas
-próximas etapas do MVP.
+As rotas principais do MVP já existem e ficam dentro do grupo protegido quando
+dependem de autenticação.
 
 Rotas internas devem ficar dentro do grupo protegido do App Router e validar a
 sessão no servidor antes de renderizar a página.

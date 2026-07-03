@@ -17,6 +17,7 @@ export type ProgressResult = {
   currentCents: number;
   targetCents: number;
   percentage: number;
+  cappedPercentage: number;
   isCompleted: boolean;
   isExceeded: boolean;
 };
@@ -93,20 +94,20 @@ function calculateProgress(currentCents: number, targetCents: number) {
       currentCents,
       targetCents,
       percentage: 0,
+      cappedPercentage: 0,
       isCompleted: false,
       isExceeded: false,
     };
   }
 
-  const percentage = Math.min(
-    100,
-    Math.floor((currentCents * 100) / targetCents),
-  );
+  const percentage = Math.floor((currentCents * 100) / targetCents);
+  const cappedPercentage = Math.min(100, percentage);
 
   return {
     currentCents,
     targetCents,
     percentage,
+    cappedPercentage,
     isCompleted: currentCents >= targetCents,
     isExceeded: currentCents > targetCents,
   };

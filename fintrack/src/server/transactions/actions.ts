@@ -26,6 +26,12 @@ function parseTransactionDate(value: string) {
   return new Date(`${value}T12:00:00.000Z`);
 }
 
+function revalidateTransactionDependencies() {
+  revalidatePath("/transactions");
+  revalidatePath("/dashboard");
+  revalidatePath("/budgets");
+}
+
 async function validateCategoryForTransaction({
   userId,
   categoryId,
@@ -120,7 +126,7 @@ export async function createTransactionAction(
     },
   });
 
-  revalidatePath("/transactions");
+  revalidateTransactionDependencies();
 
   return {
     success: true,
@@ -203,7 +209,7 @@ export async function updateTransactionAction(
     };
   }
 
-  revalidatePath("/transactions");
+  revalidateTransactionDependencies();
 
   return {
     success: true,
@@ -238,7 +244,7 @@ export async function deleteTransactionAction(
     };
   }
 
-  revalidatePath("/transactions");
+  revalidateTransactionDependencies();
 
   return {
     success: true,

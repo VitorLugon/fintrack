@@ -6,6 +6,7 @@ type BudgetAlert = {
   spentCents: number;
   limitCents: number;
   percentage: number;
+  cappedPercentage: number;
 };
 
 type BudgetAlertsProps = {

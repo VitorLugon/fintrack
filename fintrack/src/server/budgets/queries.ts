@@ -109,6 +109,7 @@ export async function listBudgetsForCurrentUser(
         limitCents: budget.limitCents,
         spentCents,
         percentage: progress.percentage,
+        cappedPercentage: progress.cappedPercentage,
         isExceeded: progress.isExceeded,
       };
     }),

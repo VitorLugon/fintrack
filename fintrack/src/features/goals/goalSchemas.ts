@@ -2,6 +2,21 @@ import { z } from "zod";
 
 const moneyInputMessage = "Informe um valor válido em reais. Ex.: 100,00.";
 
+function isValidDateInput(value: string) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    return false;
+  }
+
+  const [year, month, day] = value.split("-").map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+
+  return (
+    date.getUTCFullYear() === year &&
+    date.getUTCMonth() === month - 1 &&
+    date.getUTCDate() === day
+  );
+}
+
 export function parseNonNegativeMoneyToCents(value: string) {
   const normalizedValue = value
     .trim()
@@ -56,7 +71,9 @@ export const goalFormSchema = z.object({
   currentAmountReais: nonNegativeMoneyInputSchema,
   deadline: z
     .string()
-    .regex(/^\d{4}-\d{2}-\d{2}$/, "Informe uma data válida.")
+    .refine((value) => value === "" || isValidDateInput(value), {
+      message: "Informe uma data válida.",
+    })
     .or(z.literal("")),
 });
 

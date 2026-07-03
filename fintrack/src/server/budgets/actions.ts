@@ -1,7 +1,11 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { CategoryStatus, CategoryType } from "@/generated/prisma/client";
+import {
+  CategoryStatus,
+  CategoryType,
+  Prisma,
+} from "@/generated/prisma/client";
 import { budgetFormSchema } from "@/features/budgets/budgetSchemas";
 import { parseMoneyToCents } from "@/features/transactions/transactionRules";
 import { requireCurrentUser } from "@/server/auth/session";
@@ -11,6 +15,13 @@ export type BudgetActionResult = {
   success: boolean;
   message: string;
 };
+
+function isUniqueConstraintError(error: unknown) {
+  return (
+    error instanceof Prisma.PrismaClientKnownRequestError &&
+    error.code === "P2002"
+  );
+}
 
 export async function createBudgetAction(
   values: unknown,
@@ -74,15 +85,26 @@ export async function createBudgetAction(
     };
   }
 
-  await prisma.budget.create({
-    data: {
-      userId: user.id,
-      categoryId: category.id,
-      month: parsed.data.month,
-      year: parsed.data.year,
-      limitCents,
-    },
-  });
+  try {
+    await prisma.budget.create({
+      data: {
+        userId: user.id,
+        categoryId: category.id,
+        month: parsed.data.month,
+        year: parsed.data.year,
+        limitCents,
+      },
+    });
+  } catch (error) {
+    if (isUniqueConstraintError(error)) {
+      return {
+        success: false,
+        message: "Já existe um orçamento para essa categoria neste mês.",
+      };
+    }
+
+    throw error;
+  }
 
   revalidatePath("/budgets");
   revalidatePath("/dashboard");

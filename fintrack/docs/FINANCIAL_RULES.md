@@ -74,8 +74,9 @@ O gasto de um orçamento é calculado pela soma das despesas da categoria no mê
 
 Progresso do orçamento = gasto / limite.
 
-A função pura `calculateBudgetProgress` retorna percentual limitado a 100% e
-indica quando o orçamento foi ultrapassado.
+A função pura `calculateBudgetProgress` retorna o percentual real usado e um
+percentual limitado a 100% para barras visuais. Ela também indica quando o
+orçamento foi ultrapassado.
 
 - `limitCents` deve ser maior que zero.
 - O mês deve estar entre 1 e 12.
@@ -83,7 +84,8 @@ indica quando o orçamento foi ultrapassado.
 - Só pode existir um orçamento por usuário, categoria, mês e ano.
 - O valor gasto é calculado apenas com transações `EXPENSE` da categoria no
   mês/ano selecionados.
-- O percentual usado é calculado com valores em centavos.
+- O percentual usado é calculado com valores em centavos e pode passar de 100%
+  quando o orçamento for ultrapassado.
 - Se o limite for zero ou inválido, o progresso não deve ser calculado por
   divisão direta.
 
@@ -91,8 +93,8 @@ indica quando o orçamento foi ultrapassado.
 
 Progresso da meta = valor atual / valor alvo.
 
-A função pura `calculateGoalProgress` retorna percentual limitado a 100% e
-indica quando a meta foi concluída.
+A função pura `calculateGoalProgress` retorna o percentual real, um percentual
+limitado a 100% para barras visuais e indica quando a meta foi concluída.
 
 O valor alvo deve ser maior que zero.
 
@@ -102,7 +104,7 @@ O valor alvo deve ser maior que zero.
 - Marcar como concluída define a meta como `COMPLETED` e ajusta o valor atual
   para o valor alvo quando necessário.
 - Cancelar a meta define o status `CANCELLED`.
-- O progresso exibido pode ser limitado a 100%, mesmo que o valor atual
+- A barra de progresso exibida pode ser limitada a 100%, mesmo que o valor atual
   ultrapasse o alvo.
 - Se o alvo for zero ou inválido, o progresso deve retornar um valor seguro.
 

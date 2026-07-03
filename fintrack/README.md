@@ -46,11 +46,14 @@ dashboard, orçamentos e metas.
 2. Copie `.env.example` para `.env` e configure `DATABASE_URL` e
    `AUTH_SECRET`.
 
-3. Gere o Prisma Client:
+3. Gere o Prisma Client, caso queira rodar manualmente:
 
    ```bash
    npx prisma generate
    ```
+
+   O projeto também executa `prisma generate` automaticamente antes do
+   `npm run build`, útil para deploy.
 
 4. Rode as migrations e a seed para criar o usuário demo:
 
@@ -79,6 +82,16 @@ npm run lint
 npm run test
 npm run build
 ```
+
+## Deploy
+
+Configure as variáveis de ambiente no provedor antes do build:
+
+- `DATABASE_URL`
+- `AUTH_SECRET`
+
+Como `src/generated/prisma` não é versionado, o script `prebuild` gera o
+Prisma Client antes do build no ambiente de deploy.
 
 ## Documentação
 

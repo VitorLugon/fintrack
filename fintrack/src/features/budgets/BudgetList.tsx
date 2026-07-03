@@ -8,6 +8,7 @@ type BudgetListProps = {
     limitCents: number;
     spentCents: number;
     percentage: number;
+    cappedPercentage: number;
     isExceeded: boolean;
   }>;
 };
@@ -94,7 +95,7 @@ export function BudgetList({ budgets }: BudgetListProps) {
               className={`h-full rounded-full ${
                 budget.isExceeded ? "bg-red-600" : "bg-emerald-600"
               }`}
-              style={{ width: `${Math.min(100, budget.percentage)}%` }}
+              style={{ width: `${budget.cappedPercentage}%` }}
             />
           </div>
         </article>

@@ -126,18 +126,20 @@ describe("regras financeiras de orçamento", () => {
       currentCents: 45000,
       targetCents: 90000,
       percentage: 50,
+      cappedPercentage: 50,
       isCompleted: false,
       isExceeded: false,
     });
   });
 
-  it("identifica orçamento ultrapassado", () => {
+  it("identifica orçamento ultrapassado mantendo o percentual real", () => {
     expect(
       calculateBudgetProgress({ spentCents: 120000, limitCents: 90000 }),
     ).toEqual({
       currentCents: 120000,
       targetCents: 90000,
-      percentage: 100,
+      percentage: 133,
+      cappedPercentage: 100,
       isCompleted: true,
       isExceeded: true,
     });
@@ -155,6 +157,7 @@ describe("regras financeiras de metas", () => {
       currentCents: 0,
       targetCents: 500000,
       percentage: 0,
+      cappedPercentage: 0,
       isCompleted: false,
       isExceeded: false,
     });
@@ -170,6 +173,7 @@ describe("regras financeiras de metas", () => {
       currentCents: 500000,
       targetCents: 500000,
       percentage: 100,
+      cappedPercentage: 100,
       isCompleted: true,
       isExceeded: false,
     });
@@ -185,6 +189,7 @@ describe("regras financeiras de metas", () => {
       currentCents: 100000,
       targetCents: 0,
       percentage: 0,
+      cappedPercentage: 0,
       isCompleted: false,
       isExceeded: false,
     });

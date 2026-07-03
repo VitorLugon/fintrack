@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { CategoryStatus } from "@/generated/prisma/client";
+import { CategoryStatus, Prisma } from "@/generated/prisma/client";
 import {
   categoryFormSchema,
   categoryIdSchema,
@@ -19,6 +19,20 @@ function normalizeOptionalText(value: string) {
   const trimmed = value.trim();
 
   return trimmed.length > 0 ? trimmed : null;
+}
+
+function isUniqueConstraintError(error: unknown) {
+  return (
+    error instanceof Prisma.PrismaClientKnownRequestError &&
+    error.code === "P2002"
+  );
+}
+
+function revalidateCategoryDependencies() {
+  revalidatePath("/categories");
+  revalidatePath("/transactions");
+  revalidatePath("/dashboard");
+  revalidatePath("/budgets");
 }
 
 export async function createCategoryAction(
@@ -52,18 +66,29 @@ export async function createCategoryAction(
     };
   }
 
-  await prisma.category.create({
-    data: {
-      userId: user.id,
-      name: parsed.data.name,
-      type: parsed.data.type,
-      status: CategoryStatus.ACTIVE,
-      color: normalizeOptionalText(parsed.data.color),
-      icon: normalizeOptionalText(parsed.data.icon),
-    },
-  });
+  try {
+    await prisma.category.create({
+      data: {
+        userId: user.id,
+        name: parsed.data.name,
+        type: parsed.data.type,
+        status: CategoryStatus.ACTIVE,
+        color: normalizeOptionalText(parsed.data.color),
+        icon: normalizeOptionalText(parsed.data.icon),
+      },
+    });
+  } catch (error) {
+    if (isUniqueConstraintError(error)) {
+      return {
+        success: false,
+        message: "Você já tem uma categoria com esse nome e tipo.",
+      };
+    }
 
-  revalidatePath("/categories");
+    throw error;
+  }
+
+  revalidateCategoryDependencies();
 
   return {
     success: true,
@@ -141,18 +166,31 @@ export async function updateCategoryAction(
     };
   }
 
-  const result = await prisma.category.updateMany({
-    where: {
-      id: parsed.data.id,
-      userId: user.id,
-    },
-    data: {
-      name: parsed.data.name,
-      type: parsed.data.type,
-      color: normalizeOptionalText(parsed.data.color),
-      icon: normalizeOptionalText(parsed.data.icon),
-    },
-  });
+  let result: { count: number };
+
+  try {
+    result = await prisma.category.updateMany({
+      where: {
+        id: parsed.data.id,
+        userId: user.id,
+      },
+      data: {
+        name: parsed.data.name,
+        type: parsed.data.type,
+        color: normalizeOptionalText(parsed.data.color),
+        icon: normalizeOptionalText(parsed.data.icon),
+      },
+    });
+  } catch (error) {
+    if (isUniqueConstraintError(error)) {
+      return {
+        success: false,
+        message: "Você já tem uma categoria com esse nome e tipo.",
+      };
+    }
+
+    throw error;
+  }
 
   if (result.count === 0) {
     return {
@@ -161,7 +199,7 @@ export async function updateCategoryAction(
     };
   }
 
-  revalidatePath("/categories");
+  revalidateCategoryDependencies();
 
   return {
     success: true,
@@ -202,7 +240,7 @@ export async function inactivateCategoryAction(
     };
   }
 
-  revalidatePath("/categories");
+  revalidateCategoryDependencies();
 
   return {
     success: true,

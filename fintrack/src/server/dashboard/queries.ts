@@ -144,6 +144,7 @@ export async function getDashboardData(
         spentCents,
         limitCents: budget.limitCents,
         percentage: progress.percentage,
+        cappedPercentage: progress.cappedPercentage,
         isExceeded: progress.isExceeded,
       };
     })
