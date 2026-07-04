@@ -188,8 +188,16 @@ Variáveis necessárias:
 
 ```env
 DATABASE_URL="postgresql://postgres:postgres@localhost:5432/fintrack?schema=public"
+DIRECT_URL="postgresql://postgres:postgres@localhost:5432/fintrack?schema=public"
 AUTH_SECRET="troque-este-segredo-local"
 ```
+
+Em produção com Neon, use:
+
+- `DATABASE_URL`: conexão pooled, normalmente com `-pooler` no hostname, usada
+  pela aplicação.
+- `DIRECT_URL`: conexão direta, sem `-pooler`, usada pelo Prisma CLI para
+  migrations.
 
 Em produção, `AUTH_SECRET` deve ser um valor longo, aleatório e secreto.
 

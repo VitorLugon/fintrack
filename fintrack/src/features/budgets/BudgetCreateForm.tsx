@@ -114,7 +114,7 @@ export function BudgetCreateForm({
               type="number"
               min={1}
               max={12}
-              {...register("month")}
+              {...register("month", { valueAsNumber: true })}
               className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-emerald-600 focus:ring-4 focus:ring-emerald-100"
             />
           </div>
@@ -129,7 +129,7 @@ export function BudgetCreateForm({
             <input
               id="budget-year"
               type="number"
-              {...register("year")}
+              {...register("year", { valueAsNumber: true })}
               className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-emerald-600 focus:ring-4 focus:ring-emerald-100"
             />
           </div>

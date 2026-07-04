@@ -5,8 +5,8 @@ const currentYear = new Date().getFullYear();
 
 export const budgetFormSchema = z.object({
   categoryId: z.string().min(1, "Selecione uma categoria de despesa."),
-  month: z.coerce.number().int().min(1, "Mês inválido.").max(12, "Mês inválido."),
-  year: z.coerce
+  month: z.number().int().min(1, "Mês inválido.").max(12, "Mês inválido."),
+  year: z
     .number()
     .int()
     .min(2000, "Ano inválido.")
