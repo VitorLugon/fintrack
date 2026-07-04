@@ -9,11 +9,9 @@ gráficos.
 
 ## Deploy
 
-- Aplicação: em breve
+- Aplicação: [https://fintrack-belugas.vercel.app/]
 - Repositório: este projeto
 
-> Quando publicar, substitua `em breve` pelo link do deploy, por exemplo:
-> `https://fintrack.vercel.app`.
 
 ## Prints
 
